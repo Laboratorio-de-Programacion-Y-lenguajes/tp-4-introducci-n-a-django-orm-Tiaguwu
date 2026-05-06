@@ -55,6 +55,11 @@ def libros_sin_disponibilidad():
             activos=Count("prestamo", filter=Q(prestamo__fecha_devolucion__isnull=True))
         ).filter(activos=models.F("cantidad_total"))
     """
+    return Libro.objects.annotate(
+
+            activos=Count("prestamo", filter=Q(prestamo__fecha_devolucion__isnull=True))
+
+            ).filter(activos=F("cantidad_total"))
 
 
 def top_n_libros_mas_prestados(n: int):
