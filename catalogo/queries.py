@@ -37,6 +37,7 @@ def autores_con_mas_de_n_libros(n: int):
         autores = autores_con_mas_de_n_libros(1)
         # devuelve autores con 2 o más libros
     """
+    return Autor.objects.annotate(cantidad_libros=Count("libro")).filter(cantidad_libros__gt=n)
 
 def libros_sin_disponibilidad():
     """
