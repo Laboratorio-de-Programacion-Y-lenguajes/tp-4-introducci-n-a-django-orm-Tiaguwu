@@ -77,3 +77,7 @@ def top_n_libros_mas_prestados(n: int):
                     .order_by("-total_prestamos")[:n]
     """
     return Libro.objects.annotate(total_prestamos=Count("prestamo")).order_by("-total_prestamos")[:n]
+
+"""
+Pense que eran 6 commits porque eso dice el tp pero el md dice otra cosa
+"""
